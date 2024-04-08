@@ -1,12 +1,8 @@
 import {LeetCode, Credential} from "leetcode-query";
 import simpleGit from "simple-git";
 import * as fs from "fs";
-import path from 'path';
-import { fileURLToPath } from 'url';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const directoryPrefix = `${__dirname}/leetcode`;
+const directoryPrefix = `${process.cwd()}/leetcode`;
 
 // Initialize Git client
 const git = simpleGit({
