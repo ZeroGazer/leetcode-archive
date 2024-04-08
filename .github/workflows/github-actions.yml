@@ -8,6 +8,8 @@ on:
     - cron: '0 0 * * *'
 
 env:
+  AUTHOR: ${GITHUB_ACTOR}
+  AUTHOR_EMAIL: ${GITHUB_ACTOR_ID}+${GITHUB_ACTOR}@users.noreply.github.com
   LEETCODE_COOKIE: ${{ secrets.LEETCODE_COOKIE }}
 
 jobs:
@@ -26,18 +28,8 @@ jobs:
           cache-dependency-path: 'yarn.lock'
       - name: Install dependency
         run: yarn install
-      - name: Setup Git
-        run: |
-          git config user.name "${GITHUB_ACTOR}"
-          git config user.email "${GITHUB_ACTOR_ID}+${GITHUB_ACTOR}@users.noreply.github.com"
       - name: Setup repository
         run: |
           git clone https://${{ secrets.LEETCODE_REPOSITORY_ACCESS_TOKEN }}@github.com/ZeroGazer/leetcode leetcode
       - name: Run script
         run: yarn start
-      - name: Push commits
-        run: |
-          cd leetcode
-          if [[ $(git rev-list --count --left-only @{u}..my_branch) -gt 0 ]]; then
-            git push origin my_branch
-          fi

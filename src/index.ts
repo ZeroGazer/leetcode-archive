@@ -1,4 +1,4 @@
-import {LeetCode, Credential} from "leetcode-query";
+import {LeetCode, Credential, RateLimiter} from "leetcode-query";
 import simpleGit from "simple-git";
 import * as fs from "fs";
 
@@ -37,6 +37,7 @@ do {
 submissions = submissions.filter(submission => submission.timestamp > lastCommitDate.getTime()).reverse();
 
 // Commit
+let hasCommit = false;
 for (const {id, title, titleSlug, lang, timestamp} of submissions) {
   try {
     const {code} = await leetcode.submission(id);
@@ -52,10 +53,17 @@ for (const {id, title, titleSlug, lang, timestamp} of submissions) {
     await git.add(`${titleSlug}/${lang}`);
     const date = new Date(timestamp);
     await git.commit(`Submit ${title}`, undefined, {
+      "--author": `${process.env.AUTHOR} <${process.env.AUTHOR_EMAIL}>`,
       "--date": `${date.getTime() / 1000} ${date.toString().substring(28, 33)}`
     });
+    hasCommit = true;
   } catch (err) {
     console.error(`Failed to extract submission. Submission ID: ${id}, Title: ${title}`);
     console.error(err);
   }
+}
+
+// Push
+if (hasCommit) {
+  await git.push();
 }
