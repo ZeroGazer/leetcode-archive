@@ -1,0 +1,43 @@
+name: Archive LeetCode
+
+run-name: Archive LeetCode
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
+
+env:
+  LEETCODE_COOKIE: ${{ secrets.LEETCODE_COOKIE }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - name: Enable Corepack
+        run: corepack enable
+      - name: Setup Yarn environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'latest'
+          cache: 'yarn'
+          cache-dependency-path: 'yarn.lock'
+      - name: Install dependency
+        run: yarn install
+      - name: Setup Git
+        run: |
+          git config user.name "${GITHUB_ACTOR}"
+          git config user.email "${GITHUB_ACTOR_ID}+${GITHUB_ACTOR}@users.noreply.github.com"
+      - name: Setup repository
+        run: |
+          git clone https://${{ secrets.LEETCODE_REPOSITORY_ACCESS_TOKEN }}@github.com/ZeroGazer/leetcode leetcode
+      - name: Run script
+        run: yarn start
+      - name: Push commits
+        run: |
+          cd leetcode
+          if [[ $(git rev-list --count --left-only @{u}..my_branch) -gt 0 ]]; then
+            git push origin my_branch
+          fi

@@ -1,0 +1,21 @@
+{
+  "name": "leetcode-archive",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Alex Poon",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "start": "tsx ./src/index.ts",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@types/node": "^20.12.5",
+    "leetcode-query": "^1.2.3",
+    "simple-git": "^3.24.0",
+    "typescript": "^5.4.4"
+  },
+  "devDependencies": {
+    "tsx": "^4.7.2"
+  }
+}
