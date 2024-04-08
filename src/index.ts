@@ -21,6 +21,7 @@ try {
 const credential = new Credential();
 await credential.init(process.env.LEETCODE_COOKIE);
 const leetcode = new LeetCode(credential);
+leetcode.limiter = new RateLimiter({limit: 5, concurrent: 1});
 
 // Extract new submissions
 let submissions = [];
