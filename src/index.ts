@@ -21,11 +21,11 @@ try {
 const credential = new Credential();
 await credential.init(process.env.LEETCODE_COOKIE);
 const leetcode = new LeetCode(credential);
-leetcode.limiter = new RateLimiter({limit: 5, concurrent: 1});
+leetcode.limiter = new RateLimiter({limit: 20, concurrent: 1});
 
 // Extract new submissions
 let submissions = [];
-const LIMIT = 1;
+const LIMIT = 20;
 let offset = 0;
 do {
   const data = await leetcode.submissions({limit: LIMIT, offset});
@@ -59,8 +59,9 @@ for (const {id, title, titleSlug, lang, timestamp} of submissions) {
     });
     hasCommit = true;
   } catch (err) {
-    console.error(`Failed to extract submission. Submission ID: ${id}, Title: ${title}`);
+    console.error(`Failed to extract submission. Submission ID: ${id} Title: ${title} Timestamp: ${timestamp}`);
     console.error(err);
+    break;
   }
 }
 
