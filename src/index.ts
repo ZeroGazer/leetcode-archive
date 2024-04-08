@@ -38,19 +38,24 @@ submissions = submissions.filter(submission => submission.timestamp > lastCommit
 
 // Commit
 for (const {id, title, titleSlug, lang, timestamp} of submissions) {
-  const {code} = await leetcode.submission(id);
-  const directoryName = `${directoryPrefix}/${titleSlug}`;
-  if (!fs.existsSync(directoryName)) {
-    fs.mkdirSync(directoryName);
+  try {
+    const {code} = await leetcode.submission(id);
+    const directoryName = `${directoryPrefix}/${titleSlug}`;
+    if (!fs.existsSync(directoryName)) {
+      fs.mkdirSync(directoryName);
+    }
+    const fileName = `${directoryPrefix}/${titleSlug}/${lang}`;
+    if (fs.existsSync(fileName)) {
+      fs.rmSync(fileName);
+    }
+    fs.writeFileSync(fileName, code);
+    await git.add(`${titleSlug}/${lang}`);
+    const date = new Date(timestamp);
+    await git.commit(`Submit ${title}`, undefined, {
+      "--date": `${date.getTime() / 1000} ${date.toString().substring(28, 33)}`
+    });
+  } catch (err) {
+    console.error(`Failed to extract submission. Submission ID: ${id}, Title: ${title}`);
+    console.error(err);
   }
-  const fileName = `${directoryPrefix}/${titleSlug}/${lang}`;
-  if (fs.existsSync(fileName)) {
-    fs.rmSync(fileName);
-  }
-  fs.writeFileSync(fileName, code);
-  await git.add(`${titleSlug}/${lang}`);
-  const date = new Date(timestamp);
-  await git.commit(`Submit ${title}`, undefined, {
-    "--date": `${date.getTime() / 1000} ${date.toString().substring(28, 33)}`
-  });
 }
