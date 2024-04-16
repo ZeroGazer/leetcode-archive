@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  build-runner:
+    build: .
+    container_name: leetcode-archive-github-runner
+    restart: always
+    env_file:
+      - ./default.env
