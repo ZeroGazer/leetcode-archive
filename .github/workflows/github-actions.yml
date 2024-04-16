@@ -30,8 +30,8 @@ jobs:
         run: yarn install
       - name: Setup Git
         run: |
-          git config --global user.name "${{ env.GITHUB_ACTOR }}"
-          git config --global user.email "${{ env.GITHUB_ACTOR_ID }}+${{ env.GITHUB_ACTOR }}@users.noreply.github.com"
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com"
       - name: Setup repository
         run: |
           git clone https://${{ secrets.LEETCODE_REPOSITORY_ACCESS_TOKEN }}@github.com/ZeroGazer/leetcode leetcode
