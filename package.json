@@ -11,12 +11,12 @@
   },
   "dependencies": {
     "@types/node": "^20.12.5",
-    "leetcode-query": "^1.2.3",
-    "simple-git": "^3.24.0",
+    "leetcode-query": "^2.0.1",
+    "simple-git": "^3.33.0",
     "typescript": "^5.4.4"
   },
   "devDependencies": {
     "tsx": "^4.7.2"
   },
-  "packageManager": "yarn@4.1.1"
+  "packageManager": "yarn@4.13.0"
 }

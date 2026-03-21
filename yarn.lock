@@ -405,6 +405,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"debug@npm:^4.4.0":
+  version: 4.4.3
+  resolution: "debug@npm:4.4.3"
+  dependencies:
+    ms: "npm:^2.1.3"
+  peerDependenciesMeta:
+    supports-color:
+      optional: true
+  checksum: 10c0/d79136ec6c83ecbefd0f6a5593da6a9c91ec4d7ddc4b54c883d6e71ec9accb5f67a1a5e96d00a328196b5b5c86d365e98d8a3a70856aaf16b4e7b1985e67f5a6
+  languageName: node
+  linkType: hard
+
 "eastasianwidth@npm:^0.2.0":
   version: 0.2.0
   resolution: "eastasianwidth@npm:0.2.0"
@@ -734,22 +746,22 @@ __metadata:
   resolution: "leetcode-archive@workspace:."
   dependencies:
     "@types/node": "npm:^20.12.5"
-    leetcode-query: "npm:^1.2.3"
-    simple-git: "npm:^3.24.0"
+    leetcode-query: "npm:^2.0.1"
+    simple-git: "npm:^3.33.0"
     tsx: "npm:^4.7.2"
     typescript: "npm:^5.4.4"
   languageName: unknown
   linkType: soft
 
-"leetcode-query@npm:^1.2.3":
-  version: 1.2.3
-  resolution: "leetcode-query@npm:1.2.3"
+"leetcode-query@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "leetcode-query@npm:2.0.1"
   dependencies:
     "@fetch-impl/cross-fetch": "npm:^1.0.0"
     "@fetch-impl/fetcher": "npm:^1.0.0"
     cross-fetch: "npm:^4.0.0"
     eventemitter3: "npm:^5.0.1"
-  checksum: 10c0/98af730d89dfa488c828173324d31be85e80325d28edfe0335bb7295c03377965085512df44ffd9f25847fe36199cfb0d090d287f150c391993962043d526281
+  checksum: 10c0/c93e4e05e0f033234e3b762cedaff06d696c9ac5a1e0978e6d4fe0f7f74bf1ef9e3751629cc6c02ef1180da81519a99d84bae51f3b7b891016587234629bcec4
   languageName: node
   linkType: hard
 
@@ -894,6 +906,13 @@ __metadata:
   version: 2.1.2
   resolution: "ms@npm:2.1.2"
   checksum: 10c0/a437714e2f90dbf881b5191d35a6db792efbca5badf112f87b9e1c712aace4b4b9b742dd6537f3edf90fd6f684de897cec230abde57e87883766712ddda297cc
+  languageName: node
+  linkType: hard
+
+"ms@npm:^2.1.3":
+  version: 2.1.3
+  resolution: "ms@npm:2.1.3"
+  checksum: 10c0/d924b57e7312b3b63ad21fc5b3dc0af5e78d61a1fc7cfb5457edaf26326bf62be5307cc87ffb6862ef1c2b33b0233cdb5d4f01c4c958cc0d660948b65a287a48
   languageName: node
   linkType: hard
 
@@ -1047,14 +1066,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"simple-git@npm:^3.24.0":
-  version: 3.24.0
-  resolution: "simple-git@npm:3.24.0"
+"simple-git@npm:^3.33.0":
+  version: 3.33.0
+  resolution: "simple-git@npm:3.33.0"
   dependencies:
     "@kwsites/file-exists": "npm:^1.1.1"
     "@kwsites/promise-deferred": "npm:^1.1.1"
-    debug: "npm:^4.3.4"
-  checksum: 10c0/4329e5be1a7af1ebb476354ed6edf6d2828dc221e15d22ce3e5e8028f537d5e9ac059d813911516f78e22dfa2ee4db4c8cf30bf912bd284e530b733bd6b5c3a0
+    debug: "npm:^4.4.0"
+  checksum: 10c0/463e91f3ee04b7fc445284c64502a4ee3d607f626f18c8bcc036815a30fe178d2216976e683c6368edd7b3093801d6e534deeb8e700a4863a76ef23f881a0712
   languageName: node
   linkType: hard
 
